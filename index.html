@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quantum Security Innovator | Full-Stack Developer | Cybersecurity Enthusiast" />
+  <title>Swetha Ranganathan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --font: 'Inter', sans-serif;
+
+      /* Light mode */
+      --light-primary:     #286ED1;
+      --light-secondary:   #475D7A;
+      --light-bg:          #F8F9FA;
+      --light-surface:     #FFFFFF;
+      --light-surfaceHov:  #F0F0F0;
+      --light-text:        #212529;
+      --light-textLight:   #6C757D;
+      --light-accent:      #00C2B8;
+      --light-border:      #DEE2E6;
+      --light-shadow:      rgba(0,0,0,0.08);
+
+      /* Dark mode */
+      --dark-primary:      #4C9AFF;
+      --dark-secondary:    #7F9CB9;
+      --dark-bg:           #1A202C;
+      --dark-surface:      #2D3748;
+      --dark-surfaceHov:   #374151;
+      --dark-text:         #E2E8F0;
+      --dark-textLight:    #A0AEC0;
+      --dark-accent:       #00C2B8;
+      --dark-border:       #4A5568;
+      --dark-shadow:       rgba(0,0,0,0.3);
+    }
+
+    [data-theme="light"] {
+      --primary:    var(--light-primary);
+      --secondary:  var(--light-secondary);
+      --bg:         var(--light-bg);
+      --surface:    var(--light-surface);
+      --surfaceHov: var(--light-surfaceHov);
+      --text:       var(--light-text);
+      --textLight:  var(--light-textLight);
+      --accent:     var(--light-accent);
+      --border:     var(--light-border);
+      --shadow:     var(--light-shadow);
+    }
+
+    [data-theme="dark"] {
+      --primary:    var(--dark-primary);
+      --secondary:  var(--dark-secondary);
+      --bg:         var(--dark-bg);
+      --surface:    var(--dark-surface);
+      --surfaceHov: var(--dark-surfaceHov);
+      --text:       var(--dark-text);
+      --textLight:  var(--dark-textLight);
+      --accent:     var(--dark-accent);
+      --border:     var(--dark-border);
+      --shadow:     var(--dark-shadow);
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-name span { color: var(--primary); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--textLight);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    /* ── Theme Toggle ── */
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surfaceHov);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .icon-sun, .icon-moon { transition: opacity 0.2s, transform 0.3s; }
+    [data-theme="light"] .icon-moon { display: none; }
+    [data-theme="dark"]  .icon-sun  { display: none; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, color-mix(in srgb, var(--primary) 8%, transparent), transparent);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      padding: 8rem 0 5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.35s forwards;
+    }
+
+    .hero-name .highlight { color: var(--primary); }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 400;
+      color: var(--textLight);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: opacity 0.2s, transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.65s forwards;
+    }
+
+    .hero-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--textLight);
+      max-width: 680px;
+    }
+
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      padding: 0.45rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--textLight);
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      background: var(--surfaceHov);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* ── Experience ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-period {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--textLight);
+      letter-spacing: 0.02em;
+      padding-top: 0.25rem;
+    }
+
+    .exp-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .exp-company {
+      font-size: 0.88rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .exp-highlight {
+      font-size: 0.9rem;
+      color: var(--textLight);
+      line-height: 1.6;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 32px var(--shadow);
+    }
+
+    .project-inner { padding: 1.75rem; }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .project-link {
+      color: var(--textLight);
+      transition: color 0.2s;
+      display: flex;
+    }
+
+    .project-link:hover { color: var(--primary); }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--textLight);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      color: var(--accent);
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Contact ── */
+    .contact-intro {
+      font-size: 1.1rem;
+      color: var(--textLight);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--textLight);
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .contact-link:hover { color: var(--primary); gap: 1rem; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2.5rem 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--textLight);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .exp-period { padding-top: 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero-name { font-size: 2.8rem; }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-name">Swetha<span>.</span></div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow">Portfolio</p>
+      <h1 class="hero-name">Swetha <span class="highlight">Ranganathan</span></h1>
+      <p class="hero-tagline">Quantum Security Innovator | Full-Stack Developer | Cybersecurity Enthusiast</p>
+      <a href="#contact" class="hero-cta">
+        Get in touch
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <p class="about-text">As a passionate technologist, I'm driven by the exciting frontier where quantum mechanics meets cutting-edge cybersecurity and software development. My expertise spans developing unbreakable communication protocols, crafting efficient data pipelines, and building robust systems, leveraging skills from Applied Cryptography to Python and C++. I thrive on tackling complex challenges, constantly pushing the boundaries of secure and intelligent technology to create impactful solutions for the future.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid"><span class="skill-tag">Quantum Cryptography</span><span class="skill-tag">Applied Cryptography</span><span class="skill-tag">FPGA Programming (HLS)</span><span class="skill-tag">Python</span><span class="skill-tag">C</span><span class="skill-tag">JavaScript</span><span class="skill-tag">C++</span><span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">IBM Qiskit</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Linux</span><span class="skill-tag">Git</span><span class="skill-tag">Cybersecurity</span><span class="skill-tag">Machine Learning</span><span class="skill-tag">Data Pipelines</span></div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Experience</p>
+      <div class="exp-list">
+      <div class="exp-item" style="animation-delay: 0s">
+        <div class="exp-left">
+          <span class="exp-period">June 2024 – July 2024</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-header">
+            <h3 class="exp-role">Research Intern in Quantum Cryptography & Communication</h3>
+            <span class="exp-company">@ Centre for Computer Networks and Cyber Security, PES University</span>
+          </div>
+          <p class="exp-highlight">Developed a hybrid protocol combining Quantum Key Distribution (QKD) and Post-Quantum Cryptography (PQC) for unbreakable communication using IBM Qiskit and Python’s Liboqs library.</p>
+        </div>
+      </div>
+      <div class="exp-item" style="animation-delay: 0.1s">
+        <div class="exp-left">
+          <span class="exp-period">Jun 2025 – Aug 2025</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-header">
+            <h3 class="exp-role">Quantum-Safe Systems Intern</h3>
+            <span class="exp-company">@ AvinyaSQ Technologies Pvt. Ltd.</span>
+          </div>
+          <p class="exp-highlight">Contributed to the client-side database and secured MQTT/mTLS communications for AvinyaSQ's Quantum Discovery Tool, ensuring robust and quantum-safe system interactions.</p>
+        </div>
+      </div>
+      <div class="exp-item" style="animation-delay: 0.2s">
+        <div class="exp-left">
+          <span class="exp-period">Jan 2026 – present</span>
+        </div>
+        <div class="exp-right">
+          <div class="exp-header">
+            <h3 class="exp-role">Intern Analyst</h3>
+            <span class="exp-company">@ KPMG Bangalore</span>
+          </div>
+          <p class="exp-highlight">Developed Python-based data pipelines and analytical components for KPMG’s Digital Lighthouse platform, enhancing system integration and performance optimization.</p>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Projects</p>
+      <div class="projects-grid">
+      <div class="project-card" style="animation-delay: 0s">
+        <div class="project-inner">
+          <div class="project-header">
+            <h3 class="project-title">Real Time Analog Clock using Python</h3>
+            
+          </div>
+          <p class="project-desc">This interactive analog clock displays the local time of any country selected by clicking on an intuitive world map interface. Built with Python, it leverages TkinterMapView, Geopy, and Turtle for a dynamic user experience.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span><span class="project-tag">Tkinter</span><span class="project-tag">Geopy</span><span class="project-tag">TkinterMapView</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" style="animation-delay: 0.15s">
+        <div class="project-inner">
+          <div class="project-header">
+            <h3 class="project-title">Creating a Process Tree using C Language</h3>
+            
+          </div>
+          <p class="project-desc">This project demonstrates the creation of kernel threads in a binary tree structure, managing processes efficiently using linked lists. It integrates a timer to periodically record CPU usage, enabling effective system monitoring.</p>
+          <div class="project-tags">
+            <span class="project-tag">C Language</span><span class="project-tag">Operating Systems</span><span class="project-tag">Kernel Threads</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" style="animation-delay: 0.3s">
+        <div class="project-inner">
+          <div class="project-header">
+            <h3 class="project-title">Integrated QKD with PQC for Secure Communication</h3>
+            
+          </div>
+          <p class="project-desc">Developed a cutting-edge secure communication protocol by seamlessly integrating Post-Quantum Cryptography with Quantum Key Distribution. This system leverages Qiskit and Liboqs Library to create a robust, future-proof defense against advanced cryptographic attacks.</p>
+          <div class="project-tags">
+            <span class="project-tag">Cybersecurity</span><span class="project-tag">Quantum Cryptography</span><span class="project-tag">Qiskit</span><span class="project-tag">Liboqs</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" style="animation-delay: 0.44999999999999996s">
+        <div class="project-inner">
+          <div class="project-header">
+            <h3 class="project-title">FPGA-Accelerated Quantum Cryptography Protocol</h3>
+            
+          </div>
+          <p class="project-desc">Currently developing a secure communication protocol to preempt quantum attacks by integrating PQC and QKD concepts. This project accelerates cryptographic operations through FPGA implementation, aiming for ultra-secure and high-performance data exchange.</p>
+          <div class="project-tags">
+            <span class="project-tag">Qiskit</span><span class="project-tag">Python</span><span class="project-tag">Verilog</span><span class="project-tag">FPGA</span><span class="project-tag">Quantum Cryptography</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <p class="contact-intro">I'm always eager to collaborate on groundbreaking projects. Let's connect and build the future of secure technology!</p>
+      <div class="contact-links"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Built with ✦ — Swetha Ranganathan
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Respect system preference on first load
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+    } else if (prefersDark) {
+      html.setAttribute('data-theme', 'dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Intersection observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.exp-item, .project-card').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
