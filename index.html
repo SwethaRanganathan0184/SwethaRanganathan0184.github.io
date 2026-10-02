@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Quantum‑Ready Software Engineer &amp; Cryptography Researcher" />
-  <title>Swetha Ranganathan</title>
+  <meta name="description" content="Quantum‑Safe Software Engineer &amp; Researcher" />
+  <title>LESGOGNG</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,26 +16,26 @@
       --font: 'Inter, sans-serif', sans-serif;
 
       /* Light mode */
-      --light-primary:     #0066FF;
-      --light-secondary:   #00BFA5;
-      --light-bg:          #FFFFFF;
+      --light-primary:     #02000f;
+      --light-secondary:   #93c5fd;
+      --light-bg:          #ffffff;
       --light-surface:     color-mix(in srgb, var(--light-bg) 95%, black);
       --light-surfaceHov:  color-mix(in srgb, var(--light-bg) 90%, black);
       --light-text:        #111111;
       --light-textLight:   #666666;
-      --light-accent:      #00C853;
+      --light-accent:      #c2cf17;
       --light-border:      color-mix(in srgb, var(--light-bg) 88%, black);
       --light-shadow:      rgba(0,0,0,0.08);
 
       /* Dark mode */
-      --dark-primary:      #3385FF;
-      --dark-secondary:    #00BFA5;
-      --dark-bg:           #111827;
+      --dark-primary:      #02000f;
+      --dark-secondary:    #60a5fa;
+      --dark-bg:           #080810;
       --dark-surface:      color-mix(in srgb, var(--dark-bg) 93%, white);
       --dark-surfaceHov:   color-mix(in srgb, var(--dark-bg) 88%, white);
       --dark-text:         #f3f4f6;
       --dark-textLight:    #9ca3af;
-      --dark-accent:       #00C853;
+      --dark-accent:       #c2cf17;
       --dark-border:       color-mix(in srgb, var(--dark-bg) 84%, white);
       --dark-shadow:       rgba(0,0,0,0.3);
     }
@@ -69,7 +69,10 @@
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    /* NOTE: deliberately no scroll-behavior: smooth here — Lenis (below)
+       already takes over scrolling via JS, and having the browser's native
+       smooth-scroll active at the same time makes scrolling feel laggy and
+       unreactive, since the two systems fight over scroll position. */
 
     body {
       font-family: var(--font);
@@ -212,17 +215,26 @@
 
     /* ── Style Overrides Injection ── */
     
-      /* Minimalism Overrides */
-      body {
-        --shadow: none !important;
+      /* Brutalism Overrides */
+      :root {
+        --brutal-shadow-color: #000000;
+      }
+      [data-theme="dark"] {
+        --brutal-shadow-color: var(--primary);
       }
       .project-card, .skill-tag, .theme-toggle, .hero-cta, nav {
-        border-radius: 2px !important;
-        box-shadow: none !important;
+        border-radius: 0px !important;
+        border: 3px solid var(--text) !important;
+        box-shadow: 5px 5px 0px var(--brutal-shadow-color) !important;
+        background: var(--surface) !important;
       }
       .project-card:hover {
-        transform: translateY(-2px) !important;
-        border-color: var(--primary) !important;
+        transform: translate(-2px, -2px) !important;
+        box-shadow: 7px 7px 0px var(--brutal-shadow-color) !important;
+      }
+      .hero-cta:hover, .theme-toggle:hover {
+        transform: translate(-1px, -1px) !important;
+        box-shadow: 3px 3px 0px var(--brutal-shadow-color) !important;
       }
     
 
@@ -308,7 +320,7 @@
     /* Button text color is computed per-mode against the resolved primary
        color so it stays readable even with an unusual AI or custom palette. */
     [data-theme="light"] .hero-cta { color: #ffffff; }
-    [data-theme="dark"]  .hero-cta { color: #111111; }
+    [data-theme="dark"]  .hero-cta { color: #ffffff; }
 
     .hero-cta:hover { 
       opacity: 0.92; 
@@ -579,7 +591,7 @@
     <div class="container hero-content">
       <p class="hero-eyebrow gsap-reveal">Portfolio</p>
       <h1 class="hero-name gsap-reveal">Swetha <span class="highlight">Ranganathan</span></h1>
-      <p class="hero-tagline gsap-reveal">Quantum‑Ready Software Engineer &amp; Cryptography Researcher</p>
+      <p class="hero-tagline gsap-reveal">Quantum‑Safe Software Engineer &amp; Researcher</p>
       <a href="#contact" class="hero-cta gsap-reveal magnetic-btn">
         Get in touch
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -591,7 +603,7 @@
   <section id="about">
     <div class="container">
       <p class="section-label gsap-reveal">About</p>
-      <p class="about-text gsap-reveal">I am a passionate software engineer focused on quantum‑resistant security and AI‑driven tools. My research bridges quantum key distribution with post‑quantum cryptography, and I build full‑stack solutions that streamline developer workflows. I thrive on turning cutting‑edge research into real‑world impact.</p>
+      <p class="about-text gsap-reveal">I am a Computer Science graduate passionate about quantum‑resistant cryptography and full‑stack development. My research bridges cutting‑edge quantum key distribution with post‑quantum algorithms, and I translate that expertise into secure, production‑grade software solutions. I thrive on building tools that protect data and empower developers to innovate safely.</p>
     </div>
   </section>
 
@@ -617,31 +629,31 @@
             <h3 class="exp-role">Research Intern in Quantum Cryptography &amp; Communication</h3>
             <span class="exp-company">@ Centre for Computer Networks and Cyber Security, PES University</span>
           </div>
-          <p class="exp-highlight">Developed a hybrid protocol combining Quantum Key Distribution and Post‑Quantum Cryptography for unbreakable communication, resulting in an IEEE‑published paper.</p>
+          <p class="exp-highlight">Developed a hybrid QKD + PQC protocol and published an IEEE paper, delivering unbreakable communication using IBM Qiskit and Liboqs.</p>
         </div>
       </div>
       <div class="exp-item" style="animation-delay: 0.1s">
         <div class="exp-left">
-          <span class="exp-period">Jun 2025 – Aug 2025</span>
+          <span class="exp-period">June 2025 – August 2025</span>
         </div>
         <div class="exp-right">
           <div class="exp-header">
             <h3 class="exp-role">Quantum‑Safe Systems Intern</h3>
             <span class="exp-company">@ AvinyaSQ Technologies Pvt. Ltd.</span>
           </div>
-          <p class="exp-highlight">Implemented secure client‑server communication using MQTT over mTLS and built an orchestrator to assess vulnerabilities and quantum resistance.</p>
+          <p class="exp-highlight">Implemented MQTT over mTLS for secure client‑server messaging and built an orchestrator to assess vulnerabilities and quantum resistance.</p>
         </div>
       </div>
       <div class="exp-item" style="animation-delay: 0.2s">
         <div class="exp-left">
-          <span class="exp-period">Jan 2026 – Jul 2026</span>
+          <span class="exp-period">January 2026 – Present</span>
         </div>
         <div class="exp-right">
           <div class="exp-header">
-            <h3 class="exp-role">Software Engineering - Analyst (Intern Analyst)</h3>
+            <h3 class="exp-role">Software Engineering Analyst (Intern/Analyst)</h3>
             <span class="exp-company">@ KPMG Bangalore</span>
           </div>
-          <p class="exp-highlight">Architected end‑to‑end productivity and developer‑tooling solutions, including a cross‑platform employee analytics tool and an automated auditing utility for 50+ IDEs, driving AI‑assisted development adoption.</p>
+          <p class="exp-highlight">Architected cross‑platform productivity and developer‑tooling solutions—including an employee analytics app and an automated auditing utility for 50+ IDEs—driving AI‑assisted development adoption across the enterprise.</p>
         </div>
       </div></div>
     </div>
@@ -658,33 +670,33 @@
             <h3 class="project-title">Portfol.io – AI powered Portfolio Site Generator</h3>
             
           </div>
-          <p class="project-desc">Built a full‑stack platform using Node.js and Google Gemini LLM that transforms resumes into deployable portfolio sites and ATS‑tailored cover letters, enabling one‑click GitHub Pages deployment with secure OAuth 2.0/Octokit authentication. This automation streamlines personal branding for job seekers while ensuring a secure CI/CD pipeline.</p>
+          <p class="project-desc">Built a full‑stack platform (Node.js, Gemini LLM) that transforms resumes into deployable portfolio sites and ATS‑tailored cover letters, enabling one‑click GitHub Pages deployment via OAuth 2.0/Octokit with JWT‑based CSRF protection. The solution streamlines job‑search workflows and cuts manual site‑building time dramatically.</p>
           <div class="project-tags">
-            <span class="project-tag">Node.js</span><span class="project-tag">Express.js</span><span class="project-tag">Google Gemini API</span><span class="project-tag">OAuth 2.0</span><span class="project-tag">Octokit</span><span class="project-tag">JWT</span><span class="project-tag">CSRF</span>
+            <span class="project-tag">Node.js</span><span class="project-tag">Express.js</span><span class="project-tag">Google Gemini API</span><span class="project-tag">OAuth 2.0</span><span class="project-tag">Octokit</span><span class="project-tag">JWT</span>
           </div>
         </div>
       </div>
       <div class="project-card" style="animation-delay: 0.15s">
         <div class="project-inner">
           <div class="project-header">
-            <h3 class="project-title">Secure Post-Quantum OTA Verification Pipeline for Automotive Systems</h3>
+            <h3 class="project-title">Secure Post‑Quantum OTA Verification Pipeline for Automotive Systems</h3>
             
           </div>
-          <p class="project-desc">Built a six‑stage fail‑fast OTA firmware verification pipeline employing ML‑KEM‑512 and ML‑DSA‑44 with SHA3‑256 integrity checks, anti‑rollback enforcement, and CAN‑bus routing on a simulated automotive gateway. Achieved 100% attack detection across four scenarios and a 71.4% latency reduction versus classical methods, demonstrating quantum‑resistant OTA updates.</p>
+          <p class="project-desc">Developed a six‑stage fail‑fast OTA firmware verification pipeline using ML‑KEM‑512 and ML‑DSA‑44 with SHA3‑256 integrity, achieving 100% attack detection across 100+ trials and a 71.4% latency reduction versus classical baselines. This demonstrates quantum‑resistant security for automotive firmware updates.</p>
           <div class="project-tags">
-            <span class="project-tag">Cybersecurity</span><span class="project-tag">Post-Quantum Cryptography</span><span class="project-tag">liboqs</span><span class="project-tag">Python</span><span class="project-tag">ML-KEM-512</span><span class="project-tag">ML-DSA-44</span><span class="project-tag">SHA3-256</span><span class="project-tag">OTA</span><span class="project-tag">Automotive</span>
+            <span class="project-tag">Cybersecurity</span><span class="project-tag">Post‑Quantum Cryptography</span><span class="project-tag">liboqs</span><span class="project-tag">Python</span>
           </div>
         </div>
       </div>
       <div class="project-card" style="animation-delay: 0.3s">
         <div class="project-inner">
           <div class="project-header">
-            <h3 class="project-title">CAPSTONE PROJECT - FPGA‑based Quantum Cryptography Protocol</h3>
+            <h3 class="project-title">FPGA‑Based Quantum Cryptography Protocol (Capstone)</h3>
             
           </div>
-          <p class="project-desc">Designed and implemented a secure communication protocol that integrates QKD with PQC, accelerating cryptographic operations via FPGA‑based hardware modules and showcasing hardware‑software co‑design for quantum‑resilient systems. Earned the Best Outgoing Project award and a patent application.</p>
+          <p class="project-desc">Designed and implemented a secure communication protocol integrating QKD with PQC, accelerating cryptographic operations via FPGA hardware modules and showcasing hardware‑software co‑design for quantum‑resilient systems; earned Best Outgoing Project award and a patent filing. The project validates performance gains and positions the solution for real‑world deployment.</p>
           <div class="project-tags">
-            <span class="project-tag">FPGA</span><span class="project-tag">Quantum Cryptography</span><span class="project-tag">Qiskit</span><span class="project-tag">Python</span><span class="project-tag">Verilog</span><span class="project-tag">Hardware‑Software Co‑Design</span>
+            <span class="project-tag">Qiskit</span><span class="project-tag">Python</span><span class="project-tag">Verilog</span><span class="project-tag">FPGA</span><span class="project-tag">Quantum Cryptography</span>
           </div>
         </div>
       </div></div>
@@ -695,7 +707,7 @@
   <section id="contact">
     <div class="container">
       <p class="section-label gsap-reveal">Contact</p>
-      <p class="contact-intro gsap-reveal">Feel free to reach out—I’d love to chat about quantum‑secure software!</p>
+      <p class="contact-intro gsap-reveal">Feel free to reach out—I’d love to discuss how we can build quantum‑safe solutions together!</p>
       <div class="contact-links"><a href="mailto:swetharanganathan0184@gmail.com" class="contact-link">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       <span>swetharanganathan0184@gmail.com</span>
@@ -746,7 +758,7 @@
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.7, // lower = snappier/more reactive; 1.2 felt sluggish
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
@@ -771,7 +783,7 @@
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          lenis.scrollTo(target, { offset: -70, duration: 1.2 });
+          lenis.scrollTo(target, { offset: -70, duration: 0.9 });
         }
       });
     });
