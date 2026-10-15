@@ -4,38 +4,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Quantum‑Safe Software Engineer &amp; Researcher" />
-  <title>LESGOGNG</title>
+  <meta name="description" content="Quantum‑Safe Software Engineer &amp; Researcher specializing in cryptography and AI‑driven solutions" />
+  <title>Swetha Ranganathan</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter%2C%20sans-serif:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     /* ── CSS Variables ── */
     :root {
-      --font: 'Inter, sans-serif', sans-serif;
+      --font: 'Inter', sans-serif;
+      --font-display: var(--font);
+      --font-mono: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
 
       /* Light mode */
-      --light-primary:     #02000f;
-      --light-secondary:   #93c5fd;
+      --light-primary:     #0066ff;
+      --light-secondary:   #00bfa5;
       --light-bg:          #ffffff;
       --light-surface:     color-mix(in srgb, var(--light-bg) 95%, black);
       --light-surfaceHov:  color-mix(in srgb, var(--light-bg) 90%, black);
       --light-text:        #111111;
       --light-textLight:   #666666;
-      --light-accent:      #c2cf17;
+      --light-accent:      #00c853;
       --light-border:      color-mix(in srgb, var(--light-bg) 88%, black);
       --light-shadow:      rgba(0,0,0,0.08);
 
       /* Dark mode */
-      --dark-primary:      #02000f;
-      --dark-secondary:    #60a5fa;
-      --dark-bg:           #080810;
+      --dark-primary:      #3399ff;
+      --dark-secondary:    #00d8a0;
+      --dark-bg:           #111827;
       --dark-surface:      color-mix(in srgb, var(--dark-bg) 93%, white);
       --dark-surfaceHov:   color-mix(in srgb, var(--dark-bg) 88%, white);
       --dark-text:         #f3f4f6;
       --dark-textLight:    #9ca3af;
-      --dark-accent:       #c2cf17;
+      --dark-accent:       #00e676;
       --dark-border:       color-mix(in srgb, var(--dark-bg) 84%, white);
       --dark-shadow:       rgba(0,0,0,0.3);
     }
@@ -51,6 +53,7 @@
       --accent:     var(--light-accent);
       --border:     var(--light-border);
       --shadow:     var(--light-shadow);
+      --on-primary: #ffffff;
     }
 
     [data-theme="dark"] {
@@ -64,6 +67,7 @@
       --accent:     var(--dark-accent);
       --border:     var(--dark-border);
       --shadow:     var(--dark-shadow);
+      --on-primary: #111111;
     }
 
     /* ── Reset & Base ── */
@@ -213,30 +217,6 @@
       color: var(--primary);
     }
 
-    /* ── Style Overrides Injection ── */
-    
-      /* Brutalism Overrides */
-      :root {
-        --brutal-shadow-color: #000000;
-      }
-      [data-theme="dark"] {
-        --brutal-shadow-color: var(--primary);
-      }
-      .project-card, .skill-tag, .theme-toggle, .hero-cta, nav {
-        border-radius: 0px !important;
-        border: 3px solid var(--text) !important;
-        box-shadow: 5px 5px 0px var(--brutal-shadow-color) !important;
-        background: var(--surface) !important;
-      }
-      .project-card:hover {
-        transform: translate(-2px, -2px) !important;
-        box-shadow: 7px 7px 0px var(--brutal-shadow-color) !important;
-      }
-      .hero-cta:hover, .theme-toggle:hover {
-        transform: translate(-1px, -1px) !important;
-        box-shadow: 3px 3px 0px var(--brutal-shadow-color) !important;
-      }
-    
 
     /* ── Progress Bar ── */
     #scroll-progress {
@@ -297,6 +277,25 @@
 
     .hero-name .highlight { color: var(--primary); }
 
+    /* Headings use the display font. It defaults to the body font, so this
+       only changes anything when a style layer or font pairing sets one. */
+    .hero-name, .nav-name, .exp-role, .project-title { font-family: var(--font-display); }
+
+    .hero-avatar {
+      display: block; width: 132px; height: 132px; object-fit: cover;
+      border-radius: 50%; margin-bottom: 1.75rem;
+      border: 3px solid var(--surface); box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    /* ── Certifications ── */
+    .cert-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
+    .cert-item {
+      display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 1rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      font-size: 0.9rem; color: var(--text);
+    }
+    .cert-item svg { flex-shrink: 0; color: var(--primary); width: 18px; height: 18px; }
+
     .hero-tagline {
       font-size: clamp(1.1rem, 2.5vw, 1.35rem);
       font-weight: 400;
@@ -320,7 +319,7 @@
     /* Button text color is computed per-mode against the resolved primary
        color so it stays readable even with an unusual AI or custom palette. */
     [data-theme="light"] .hero-cta { color: #ffffff; }
-    [data-theme="dark"]  .hero-cta { color: #ffffff; }
+    [data-theme="dark"]  .hero-cta { color: #111111; }
 
     .hero-cta:hover { 
       opacity: 0.92; 
@@ -360,7 +359,7 @@
       background: var(--surfaceHov);
       border-color: var(--primary);
       color: var(--primary);
-      transform: translateY(-2px);
+      translate: 0 -2px; /* not transform: GSAP owns this element's inline transform */
       box-shadow: 0 4px 12px var(--shadow);
     }
 
@@ -423,11 +422,11 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+      transition: translate 0.3s cubic-bezier(0.16, 1, 0.3, 1), rotate 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s;
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
+      translate: 0 -6px; /* not transform: GSAP owns this element's inline transform */
       border-color: var(--primary);
       box-shadow: 0 16px 36px var(--shadow);
     }
@@ -527,6 +526,68 @@
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
+    /* ── Visual style layer (terminal) — injected after the
+       base stylesheet so it wins at equal specificity without !important,
+       but before the print rules so "Save as PDF" still overrides it. ── */
+    
+    /* ── Terminal: the whole page as a shell session — mono, prompts, a blinking cursor ── */
+    :root { --font: 'JetBrains Mono', ui-monospace, monospace; --font-display: var(--font); }
+    [data-theme="light"] { --bg: color-mix(in srgb, var(--light-bg) 80%, #e9ecef); --surface: color-mix(in srgb, var(--light-bg) 92%, #dee2e6); --border: color-mix(in srgb, var(--text) 25%, transparent); }
+    [data-theme="dark"]  { --bg: #0b0e0c; --surface: #111612; --border: color-mix(in srgb, var(--primary) 35%, transparent); --text: #d7f5dc; --textLight: #8fb596; }
+    body { font-size: 0.95rem; }
+    /* Faint CRT scanlines in dark mode only. */
+    [data-theme="dark"] body::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2000;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
+    }
+
+    nav { background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px dashed var(--border); }
+    .nav-name::before { content: "~/"; color: var(--primary); }
+    .nav-links a::before { content: "./"; color: var(--primary); }
+    .nav-links a:hover { color: var(--text); text-decoration: underline; }
+    .theme-toggle, .print-btn { border-radius: 4px; border-style: dashed; }
+    #scroll-progress { height: 3px; background: var(--primary); }
+
+    .hero-bg { display: none; }
+    #hero { border-bottom: 1px dashed var(--border); }
+    .hero-avatar { border-radius: 4px; box-shadow: none; border: 1px dashed var(--primary); image-rendering: pixelated; }
+    .hero-eyebrow { text-transform: none; letter-spacing: 0; color: var(--textLight); }
+    .hero-eyebrow::before { content: "$ whoami"; color: var(--primary); margin-right: 0.75rem; }
+    .hero-name { font-weight: 700; font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: -0.02em; }
+    .hero-name::after { content: "▋"; color: var(--primary); margin-left: 0.1em; animation: term-blink 1s steps(1) infinite; }
+    .hero-name .highlight { color: var(--primary); }
+    .hero-tagline::before { content: "# "; color: var(--textLight); }
+    [data-theme] .hero-cta { border-radius: 4px; font-family: var(--font); }
+    [data-theme] .hero-cta::before { content: "> "; }
+    [data-theme="dark"] .hero-name .highlight, [data-theme="dark"] .section-label { text-shadow: 0 0 10px color-mix(in srgb, var(--primary) 55%, transparent); }
+
+    section { border-bottom: 1px dashed var(--border); }
+    .section-label { text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--text); }
+    .section-label::before { content: "$ cat"; color: var(--primary); }
+    .section-label::after { background: none; border-top: 1px dashed var(--border); height: 0; }
+
+    .about-text { color: var(--text); font-size: 1rem; border-left: 2px solid var(--primary); padding-left: 1.25rem; }
+    .skill-tag { border-radius: 4px; background: var(--surface); border: 1px dashed var(--border); color: var(--text); font-size: 0.85rem; }
+    .skill-tag::before { content: "> "; color: var(--primary); }
+    .skill-tag:hover { border-style: solid; border-color: var(--primary); color: var(--primary); }
+    .exp-period { color: var(--primary); }
+    .exp-period::before { content: "["; } .exp-period::after { content: "]"; }
+    .exp-company { color: var(--accent); }
+
+    .project-card { border-radius: 6px; background: var(--surface); border: 1px dashed var(--border); }
+    .project-card:hover { border-style: solid; border-color: var(--primary); box-shadow: none; }
+    .project-title::before { content: "▸ "; color: var(--primary); }
+    .project-tag { border-radius: 4px; background: none; border: 1px solid var(--border); color: var(--textLight); }
+
+    .contact-link::before { content: "→"; color: var(--primary); }
+    footer { border-top: 1px dashed var(--border); }
+    footer .container::before { content: "[process exited with code 0] "; color: var(--textLight); }
+
+    @keyframes term-blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .hero-name::after { animation: none; } }
+    
+    
+
     /* ── Print / "Save as PDF" ── */
     @media print {
       /* Force light-mode colors regardless of the active toggle — reliable
@@ -551,8 +612,14 @@
       .project-card, .skill-tag, .hero-cta { box-shadow: none !important; backdrop-filter: none !important; border: 1px solid #ddd !important; }
       .hero-cta { background: none !important; color: var(--light-text) !important; border: 1px solid #ddd !important; }
       a { text-decoration: underline; }
+      /* Undo style-layer decoration that wastes ink or doesn't survive paper. */
+      body { background: #ffffff !important; }
+      body::before, .hero-bg { display: none !important; }
+      section > .container { background: none !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; }
+      .project-card, .skill-tag, .hero-eyebrow { rotate: none !important; translate: none !important; }
     }
   </style>
+  
 </head>
 <body>
 
@@ -567,6 +634,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="print-btn magnetic-btn" id="printBtn" aria-label="Save as PDF" title="Save as PDF">
@@ -589,9 +657,10 @@
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="container hero-content">
+      
       <p class="hero-eyebrow gsap-reveal">Portfolio</p>
       <h1 class="hero-name gsap-reveal">Swetha <span class="highlight">Ranganathan</span></h1>
-      <p class="hero-tagline gsap-reveal">Quantum‑Safe Software Engineer &amp; Researcher</p>
+      <p class="hero-tagline gsap-reveal">Quantum‑Safe Software Engineer &amp; Researcher specializing in cryptography and AI‑driven solutions</p>
       <a href="#contact" class="hero-cta gsap-reveal magnetic-btn">
         Get in touch
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -599,23 +668,22 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- Sections (order / visibility / labels from options.sections) -->
+
   <section id="about">
     <div class="container">
       <p class="section-label gsap-reveal">About</p>
-      <p class="about-text gsap-reveal">I am a Computer Science graduate passionate about quantum‑resistant cryptography and full‑stack development. My research bridges cutting‑edge quantum key distribution with post‑quantum algorithms, and I translate that expertise into secure, production‑grade software solutions. I thrive on building tools that protect data and empower developers to innovate safely.</p>
+      <p class="about-text gsap-reveal">I am a passionate software engineer who bridges quantum‑grade security with modern AI applications. My research and internship experiences have delivered publishable cryptographic protocols and enterprise‑grade developer tools. I thrive on turning complex technical challenges into scalable, impact‑focused solutions.</p>
     </div>
   </section>
 
-  <!-- Skills -->
   <section id="skills">
     <div class="container">
       <p class="section-label gsap-reveal">Skills</p>
-      <div class="skills-grid"><span class="skill-tag">DSA</span><span class="skill-tag">Applied Cryptography</span><span class="skill-tag">Cybersecurity</span><span class="skill-tag">Quantum Cryptography</span><span class="skill-tag">FPGA Programming - HLS</span><span class="skill-tag">Python</span><span class="skill-tag">C</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Rust</span><span class="skill-tag">MATLAB</span><span class="skill-tag">ARM Assembly Language</span><span class="skill-tag">PyTorch</span><span class="skill-tag">pandas</span><span class="skill-tag">numpy</span><span class="skill-tag">scikit-learn</span><span class="skill-tag">Keras</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Claude code</span><span class="skill-tag">Generative AI</span><span class="skill-tag">Token optimization</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Neo4j</span><span class="skill-tag">Linux</span><span class="skill-tag">Git</span><span class="skill-tag">IBM Qiskit</span><span class="skill-tag">Jira</span><span class="skill-tag">3D Modelling on Fusion 360 (CADD)</span><span class="skill-tag">Simulink</span><span class="skill-tag">HLS</span><span class="skill-tag">DASH</span><span class="skill-tag">HTTP-based adaptive streaming</span></div>
+      <div class="skills-grid"><span class="skill-tag">DSA</span><span class="skill-tag">Applied Cryptography</span><span class="skill-tag">Cybersecurity</span><span class="skill-tag">Quantum Cryptography</span><span class="skill-tag">FPGA Programming - HLS</span><span class="skill-tag">Python</span><span class="skill-tag">C</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Rust</span><span class="skill-tag">MATLAB</span><span class="skill-tag">ARM Assembly Language</span><span class="skill-tag">PyTorch</span><span class="skill-tag">pandas</span><span class="skill-tag">numpy</span><span class="skill-tag">scikit-learn</span><span class="skill-tag">Keras</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Claude code</span><span class="skill-tag">Generative AI</span><span class="skill-tag">Token optimization</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Neo4j</span><span class="skill-tag">Linux</span><span class="skill-tag">Git</span><span class="skill-tag">IBM Qiskit</span><span class="skill-tag">Jira</span><span class="skill-tag">3D Modelling on Fusion 360 (CADD)</span><span class="skill-tag">Simulink</span><span class="skill-tag">DASH</span><span class="skill-tag">HTTP-based adaptive streaming</span></div>
     </div>
   </section>
 
-  <!-- Experience -->
   <section id="experience">
     <div class="container">
       <p class="section-label gsap-reveal">Experience</p>
@@ -629,7 +697,7 @@
             <h3 class="exp-role">Research Intern in Quantum Cryptography &amp; Communication</h3>
             <span class="exp-company">@ Centre for Computer Networks and Cyber Security, PES University</span>
           </div>
-          <p class="exp-highlight">Developed a hybrid QKD + PQC protocol and published an IEEE paper, delivering unbreakable communication using IBM Qiskit and Liboqs.</p>
+          <p class="exp-highlight">Developed a hybrid QKD‑PQC protocol and co‑authored an IEEE paper, showcasing unbreakable communication.</p>
         </div>
       </div>
       <div class="exp-item" style="animation-delay: 0.1s">
@@ -641,25 +709,24 @@
             <h3 class="exp-role">Quantum‑Safe Systems Intern</h3>
             <span class="exp-company">@ AvinyaSQ Technologies Pvt. Ltd.</span>
           </div>
-          <p class="exp-highlight">Implemented MQTT over mTLS for secure client‑server messaging and built an orchestrator to assess vulnerabilities and quantum resistance.</p>
+          <p class="exp-highlight">Implemented secure MQTT over mTLS client‑server communication and built a vulnerability‑assessment orchestrator for quantum‑resistant systems.</p>
         </div>
       </div>
       <div class="exp-item" style="animation-delay: 0.2s">
         <div class="exp-left">
-          <span class="exp-period">January 2026 – Present</span>
+          <span class="exp-period">Jan 2026 – Present</span>
         </div>
         <div class="exp-right">
           <div class="exp-header">
-            <h3 class="exp-role">Software Engineering Analyst (Intern/Analyst)</h3>
+            <h3 class="exp-role">Software Engineering - Analyst (Intern Analyst)</h3>
             <span class="exp-company">@ KPMG Bangalore</span>
           </div>
-          <p class="exp-highlight">Architected cross‑platform productivity and developer‑tooling solutions—including an employee analytics app and an automated auditing utility for 50+ IDEs—driving AI‑assisted development adoption across the enterprise.</p>
+          <p class="exp-highlight">Architected a cross‑platform employee analytics tool and an automated auditing utility across 50+ IDEs, driving AI‑assisted development adoption enterprise‑wide.</p>
         </div>
       </div></div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <p class="section-label gsap-reveal">Projects</p>
@@ -670,7 +737,7 @@
             <h3 class="project-title">Portfol.io – AI powered Portfolio Site Generator</h3>
             
           </div>
-          <p class="project-desc">Built a full‑stack platform (Node.js, Gemini LLM) that transforms resumes into deployable portfolio sites and ATS‑tailored cover letters, enabling one‑click GitHub Pages deployment via OAuth 2.0/Octokit with JWT‑based CSRF protection. The solution streamlines job‑search workflows and cuts manual site‑building time dramatically.</p>
+          <p class="project-desc">Built a full‑stack platform that transforms resumes into deployable portfolio websites and ATS‑optimized cover letters using Node.js, Google Gemini LLM, and OAuth 2.0. Integrated one‑click GitHub Pages deployment secured by JWT‑based CSRF protection, streamlining personal branding for job seekers.</p>
           <div class="project-tags">
             <span class="project-tag">Node.js</span><span class="project-tag">Express.js</span><span class="project-tag">Google Gemini API</span><span class="project-tag">OAuth 2.0</span><span class="project-tag">Octokit</span><span class="project-tag">JWT</span>
           </div>
@@ -682,32 +749,38 @@
             <h3 class="project-title">Secure Post‑Quantum OTA Verification Pipeline for Automotive Systems</h3>
             
           </div>
-          <p class="project-desc">Developed a six‑stage fail‑fast OTA firmware verification pipeline using ML‑KEM‑512 and ML‑DSA‑44 with SHA3‑256 integrity, achieving 100% attack detection across 100+ trials and a 71.4% latency reduction versus classical baselines. This demonstrates quantum‑resistant security for automotive firmware updates.</p>
+          <p class="project-desc">Engineered a six‑stage fail‑fast OTA firmware verification pipeline employing ML‑KEM‑512 and ML‑DSA‑44 with SHA3‑256 integrity, anti‑rollback, and CAN‑bus routing on a simulated automotive gateway. Demonstrated 100% attack detection and a 71.4% latency reduction, outperforming RSA‑2048 by 10.1×.</p>
           <div class="project-tags">
-            <span class="project-tag">Cybersecurity</span><span class="project-tag">Post‑Quantum Cryptography</span><span class="project-tag">liboqs</span><span class="project-tag">Python</span>
+            <span class="project-tag">Cybersecurity</span><span class="project-tag">Post‑Quantum Cryptography</span><span class="project-tag">liboqs</span><span class="project-tag">Python</span><span class="project-tag">ML‑KEM‑512</span><span class="project-tag">ML‑DSA‑44</span><span class="project-tag">SHA3‑256</span><span class="project-tag">OTA</span>
           </div>
         </div>
       </div>
       <div class="project-card" style="animation-delay: 0.3s">
         <div class="project-inner">
           <div class="project-header">
-            <h3 class="project-title">FPGA‑Based Quantum Cryptography Protocol (Capstone)</h3>
+            <h3 class="project-title">CAPSTONE PROJECT - Design &amp; Development of an FPGA‑based Quantum Cryptography Protocol</h3>
             
           </div>
-          <p class="project-desc">Designed and implemented a secure communication protocol integrating QKD with PQC, accelerating cryptographic operations via FPGA hardware modules and showcasing hardware‑software co‑design for quantum‑resilient systems; earned Best Outgoing Project award and a patent filing. The project validates performance gains and positions the solution for real‑world deployment.</p>
+          <p class="project-desc">Designed and implemented a secure communication protocol that fuses QKD with PQC, accelerating cryptographic operations via FPGA‑based modules. Delivered a hardware‑software co‑design that earned the Best Outgoing Project award and a patent filing.</p>
           <div class="project-tags">
-            <span class="project-tag">Qiskit</span><span class="project-tag">Python</span><span class="project-tag">Verilog</span><span class="project-tag">FPGA</span><span class="project-tag">Quantum Cryptography</span>
+            <span class="project-tag">Qiskit</span><span class="project-tag">Python</span><span class="project-tag">Verilog</span><span class="project-tag">FPGA</span><span class="project-tag">Quantum Cryptography</span><span class="project-tag">PQC</span>
           </div>
         </div>
       </div></div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <section id="certifications">
+    <div class="container">
+      <p class="section-label gsap-reveal">Certifications</p>
+      <ul class="cert-list"><li class="cert-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span>Prof. MRD Scholarship (top 20%)</span></li><li class="cert-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span>Prof. CNR Scholarship (top 20%)</span></li><li class="cert-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span>Distinction Award</span></li><li class="cert-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span>Best Outgoing Project award</span></li></ul>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <p class="section-label gsap-reveal">Contact</p>
-      <p class="contact-intro gsap-reveal">Feel free to reach out—I’d love to discuss how we can build quantum‑safe solutions together!</p>
+      <p class="contact-intro gsap-reveal">Feel free to reach out—I’d love to discuss how we can build the next generation of secure, AI‑driven solutions together.</p>
       <div class="contact-links"><a href="mailto:swetharanganathan0184@gmail.com" class="contact-link">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       <span>swetharanganathan0184@gmail.com</span>
@@ -720,7 +793,7 @@
 
   <footer>
     <div class="container">
-      Built with ✦ — Swetha Ranganathan
+      Built with ✦ Portfol.io — Swetha Ranganathan
     </div>
   </footer>
 
@@ -835,53 +908,18 @@
         }
       });
 
-      // Stagger animation for Skill Tags
-      gsap.fromTo('.skill-tag', 
-        { scale: 0.8, opacity: 0 }, 
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.04,
-          ease: 'back.out(1.5)',
-          scrollTrigger: {
-            trigger: '#skills',
-            start: 'top 80%'
-          }
-        }
-      );
-
-      // Stagger animation for Experience Items
-      gsap.fromTo('.exp-item', 
-        { y: 30, opacity: 0 }, 
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '#experience',
-            start: 'top 80%'
-          }
-        }
-      );
-
-      // Stagger animation for Project Cards
-      gsap.fromTo('.project-card', 
-        { y: 40, opacity: 0 }, 
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '#projects',
-            start: 'top 80%'
-          }
-        }
-      );
+      // Staggered entrances for skill tags, experience items, project cards
+      // and certifications. Sections can be hidden by the user, so each one is
+      // only animated if it was actually rendered.
+      [
+        { section: '#skills', items: '.skill-tag', from: { scale: 0.8, opacity: 0 }, to: { scale: 1, opacity: 1, duration: 0.5, stagger: 0.04, ease: 'back.out(1.5)' } },
+        { section: '#experience', items: '.exp-item', from: { y: 30, opacity: 0 }, to: { y: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: 'power2.out' } },
+        { section: '#projects', items: '.project-card', from: { y: 40, opacity: 0 }, to: { y: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: 'power3.out' } },
+        { section: '#certifications', items: '.cert-item', from: { y: 20, opacity: 0 }, to: { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out' } },
+      ].forEach(({ section, items, from, to }) => {
+        if (!document.querySelector(section) || !document.querySelector(items)) return;
+        gsap.fromTo(items, from, { ...to, scrollTrigger: { trigger: section, start: 'top 80%' } });
+      });
 
       // ── 6. Magnetic Buttons Effect ──
       document.querySelectorAll('.magnetic-btn').forEach((btn) => {
@@ -904,7 +942,7 @@
       });
     } else {
       // Reveal all content immediately for reduced motion
-      gsap.set('.gsap-reveal, .skill-tag, .exp-item, .project-card', { opacity: 1, y: 0, scale: 1 });
+      gsap.set('.gsap-reveal, .skill-tag, .exp-item, .project-card, .cert-item', { opacity: 1, y: 0, scale: 1 });
     }
   </script>
 </body>
